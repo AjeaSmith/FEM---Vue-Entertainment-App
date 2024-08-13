@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-400: #5a698f;
+  --blue-600: #161d2f;
+  --blue-900: #10141e;
+  --red: #fc4747;
+  --text-color: #ffffff;
+
+  /* Typography */
+  --font-family: 'Outfit', sans-serif;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-size-base: 1rem;
+
+  /* Heading sizes */
+  --heading-lg: 2rem;
+  --heading-lg-letter-spacing: -0.5px;
+  --heading-md: 1.5rem;
+  --heading-sm: 1.5rem;
+  --heading-xs: 1.125rem;
+  --body-sm: 0.813rem;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--blue-900);
+}
+/* HEADINGS */
+.headline {
+  font-weight: var(--font-weight-light);
+  font-size: 1.25rem;
+  letter-spacing: -0.31px;
+  margin-block: 1.5rem;
+}
+.active-link path {
+  fill: var(--text-color);
+}
+
+.profile {
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/*---- CARD STYLES ----*/
+.card {
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.card:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .play-button-container {
+  opacity: 1;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card:hover::after {
+  background-color: rgba(0, 0, 0, 0.45); /* Darker opaque background color on hover */
+}
+
+.info {
+  z-index: 2;
+}
+
+.year,
+.genre,
+.rating {
+  font-size: 11px;
+  opacity: 0.6;
+  font-weight: var(--font-weight-light);
+}
+
+.title {
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  margin-top: 4px;
+}
+
+.dot-divider::before {
+  content: '•';
+  margin: 0 10px;
+  opacity: 0.6; /* Adjust the color as needed */
+}
+
+/* Play button hover state */
+.play-button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.play-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.play-button svg {
+  margin-right: 10px;
+}
+
+.play-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Bookmark icon styles */
+.bookmark_icon {
+  cursor: pointer;
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  place-self: flex-end;
+  padding: 10px;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.bookmark_icon:hover {
+  background-color: white;
+}
+
+.bookmark_icon:hover svg path {
+  stroke: black;
+}
+
+/* Container */
+.container {
+  /* padding-right: 1rem; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  column-gap: 12px;
+  row-gap: 16px;
+}
+/* Mobile */
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* Tablet */
+@media (min-width: 750px) {
+  .year,
+  .genre,
+  .rating {
+    font-size: var(--body-sm);
+    opacity: 0.6;
+  }
+  .title {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--heading-sm);
+  }
+  .bookmark_icon {
+    margin: 1rem;
+  }
+  .headline {
+    font-weight: var(--font-weight-light);
+    font-size: var(--heading-lg);
+    letter-spacing: var(--heading-lg-letter-spacing);
+    margin-block: 1.5rem;
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    column-gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .container {
+    column-gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
